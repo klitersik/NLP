@@ -14,15 +14,21 @@ def query_pegasus(payload,API_URL):
         response = requests.post(API_URL, headers=headers, json=payload)
         return response.json()
 
-uploaded_file = st.file_uploader("Choose a audio file")
+uploaded_file = st.file_uploader("Upload an audio file", type=["mp3"])
 
 if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    st.write(type(bytes_data))
-    headers = {"Authorization": "Bearer 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"}
+   with NamedTemporaryFile(suffix="mp3") as temp:
+        temp.write(audio.getvalue())
+        temp.seek(0)
+        #model = whisper.load_model("base")
+        #result = model.transcribe(temp.name)
+        #st.write(result["text"])
+        #bytes_data = uploaded_file.getvalue()
+        #st.write(type(bytes_data))
+        headers = {"Authorization": "Bearer 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"}
 
-    API_URL_whisper = "https://api-inference.huggingface.co/models/openai/whisper-tiny"
-    output = query_whisper(bytes_data,API_URL_whisper)
+        API_URL_whisper = "https://api-inference.huggingface.co/models/openai/whisper-tiny"
+        output = query_whisper(temp.name,API_URL_whisper)
 
     text = output
     st.header("Text")
