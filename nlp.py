@@ -21,7 +21,7 @@ if uploaded_file is not None:
         #st.write(type(bytes_data))
         headers = {"Authorization": "Bearer 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"}
         API_URL_whisper = "https://api-inference.huggingface.co/models/openai/whisper-tiny"
-        output = query_whisper(2,API_URL_whisper)
+        output = query_whisper("text",API_URL_whisper)
 
         text = output
         st.header("Text")
