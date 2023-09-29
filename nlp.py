@@ -18,10 +18,12 @@ uploaded_file = st.file_uploader("Choose a audio file")
 st.write(type(uploaded_file))
 
 if uploaded_file is not None:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
     headers = {"Authorization": "Bearer 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"}
 
     API_URL_whisper = "https://api-inference.huggingface.co/models/openai/whisper-tiny"
-    output = query_whisper(uploaded_file,API_URL_whisper)
+    output = query_whisper(bytes_data,API_URL_whisper)
 
     text = output
     st.header("Text")
