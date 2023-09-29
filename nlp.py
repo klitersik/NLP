@@ -30,9 +30,9 @@ if uploaded_file is not None:
         API_URL_whisper = "https://api-inference.huggingface.co/models/openai/whisper-tiny"
         output = query_whisper(temp.name,API_URL_whisper)
 
-    text = output
-    st.header("Text")
-    st.write(text)
+        text = output
+        st.header("Text")
+        st.write(text)
     st.divider()
 
     API_URL_pegasus = "https://api-inference.huggingface.co/models/tuner007/pegasus_summarizer"
