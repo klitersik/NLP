@@ -31,4 +31,4 @@ if uploaded_file is not None:
     API_URL_pegasus = "https://api-inference.huggingface.co/models/tuner007/pegasus_summarizer"
     output = query_pegasus({"inputs": text,},API_URL_pegasus)
     st.header("Summarized Text")
-    st.write(output[0]["summary_text"])
+    st.write(output)
